@@ -84,5 +84,14 @@ Anything you inserted into the table will be lost unless you commit. So you must
 ### 5. close()
 Closing the .db but you can call it back when necessary. 
 
+In gpfs1, 
+```
+# cd /gpfs/gpfsfpo/bigrams/
+# vi create_db.py
+```
+copy and paste `create_db.py` 
+
+
+
 
 
