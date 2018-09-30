@@ -56,5 +56,33 @@ Make sure you update the index from 34 to 66 in gpfs2 and 67 to 99 in gpfs3.
 ```
 # python2 downzip_pp.py 
 ```
-Repeat the CLI in gpfs3 as well. This will take hours to download and preprocess those 34, 33, 33 files in all nodes. 
+Repeat the CLI in gpfs3 as well. This will take hours to download and preprocess those 34, 33, 33 = 100 files in all nodes. You'd see that all those bigrams-0.txt ... bigrams-99.txt output, each with 47.6MB will be viewable in all of the nodes although you're downloading separate indexes from separate nodes. You'll get the idea what this is the case here. 
+
+# Setting up sqlite3 
+More details --> https://docs.python.org/2/library/sqlite3.html  
+
+Basically, we will setup sqlite3 (non standard SQL) in all 3 nodes so that once we query our words, all 3 nodes can execute our jobs in parallel and will generate output. To create a SQL database (file.db), you need to know 5 basic functions of sqlite3. 
+
+1. connect()  
+2. cursor()  
+3. execute()  
+4. commit()  
+5. close()  
+
+### 1. connect()
+This method will establish a connection to the database (file.db). 
+
+### 2. cursor ()
+This will create an object where you can execute your input data. 
+
+### 3. execute() 
+This is where you create your table, insert your data into the table. 
+
+### 4. commit()
+Anything you inserted into the table will be lost unless you commit. So you must commit changes. 
+
+### 5. close()
+Closing the .db but you can call it back when necessary. 
+
+
 
