@@ -5,12 +5,10 @@ import sys
 import os
 import time
 
-"""
-This program will create SQL table. The data will be loaded from pickle format and 
-will be inserted into the .db table.
-"""
 
 def load_pickle(input_file):
+    # input_file = '/gpfs/gpfsfpo/bigrams/bigrams-0.txt'
+    # bigrams-0.txt is a dictionary {'bigram key': 'bigram count value'} in binary format
     with open(input_file, 'r') as f:
         return cp.load(f)
 
@@ -43,6 +41,10 @@ def reset_database_table(target_db):
             sys.exit(1)
 
 def insert_into_database(input_data, target_db):
+    """updating the table with bigram and its count data"""
+    # input_data = {"bigram key":"bigram count value"} dictionary
+    # target_db = gpfsX_bigrams.db
+    
     with sq.connect(target_db) as conn:
         try:
             cur = conn.cursor()
@@ -70,30 +72,6 @@ def insert_into_database(input_data, target_db):
             sys.exit(1)
 
 
-# def save_to_database(input_data, target_db):
-#     with sq.connect(target_db) as conn:
-#         try:
-#             cur = conn.cursor()
-#             cur.execute("SELECT SQLITE_VERSION()")
-#             cur.execute("CREATE TABLE IF NOT EXISTS bigram_counts(FirstWord TEXT NOT NULL, SecondWord TEXT NOT NULL, Count INTEGER, PRIMARY KEY (FirstWord, SecondWord))")
-#             conn.commit()
-#
-#             for bigram, count in input_data.iteritems():
-#                 t = split_bigram(bigram)
-#                 if t:
-#                     f, s = t[0], t[1]
-#                     res = cur.execute('SELECT * FROM bigram_counts WHERE FirstWord=:first AND SecondWord=:second', {"first": f, "second": s})
-#                     print res
-#         except sq.Error as e:
-#             if conn:
-#                 conn.rollback()
-#             print 'error occurred: %s' % e.args[0]
-#             sys.exit(1)
-#         finally:
-#             if conn:
-#                 conn.close()
-
-
 if __name__ == '__main__':
 
     if len(sys.argv) != 6:
@@ -116,6 +94,7 @@ if __name__ == '__main__':
         for i in range(fstart_index, fend_index+1, 1):
             fname = ''.join([r'bigrams-', str(i), '.txt'])
             in_file = os.path.join(fs_path, fname)
+            # in_file = '/gpfs/gpfsfpo/bigrams/bigrams-0.txt'
             print 'reading: %s' % in_file
             t = time.time()
             dataset = load_pickle(in_file)
