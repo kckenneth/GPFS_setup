@@ -1,8 +1,7 @@
-#!/usr/bin/python3
-
 import sys
 import os
 import pickle
+import mmap
 from StringIO import StringIO
 from zipfile import ZipFile
 from urllib import urlopen 
@@ -24,7 +23,6 @@ def generate_url(uri_base='', filename='', archive_type='.zip'):
 def download_file(uri, filename):
 	url = urlopen(uri)
 	odic = OrderedDict()
-	# Retrieving essential data on the fly while unzipping
 	with ZipFile(StringIO(url.read())) as zipfile:
 		with zipfile.open(filename) as f:
 			for line in f:
@@ -49,7 +47,7 @@ def save_file(input_data, output_file):
 if __name__ == '__main__':
 
 	if len(sys.argv) != 3:
-		print("enter the start and end files")
+		print 'enter the start and end files'
 	else:
 
 		start = sys.argv[1]
@@ -67,6 +65,6 @@ if __name__ == '__main__':
 			this_dict = download_file(url_str, name)
 
 			output_filename = ''.join(['bigrams-', str(i), '.txt'])
-			print("writing file... {}".format(output_filename))
+			print 'writing file... %s' % (output_filename)
 			with open(output_filename, 'wb') as outputfile:
 				pickle.dump(this_dict, outputfile)
