@@ -174,6 +174,10 @@ do for j in $nodes
  done
 done
 ```
+Change to executable mode 
+```
+# chmod 755 test.sh
+```
 run the script. If all nodes communicate without password (In order for GPFS to work, each node must communicate passwordless), you'd see your script works. If nodes communication fails, you'd see some errors here. 
 ```
 # ./test.sh
