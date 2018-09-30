@@ -58,7 +58,7 @@ Make sure you update the index from 34 to 66 in gpfs2 and 67 to 99 in gpfs3.
 ```
 Repeat the CLI in gpfs3 as well. This will take hours to download and preprocess those 34, 33, 33 = 100 files in all nodes. You'd see that all those bigrams-0.txt ... bigrams-99.txt output, each with 47.6MB will be viewable in all of the nodes although you're downloading separate indexes from separate nodes. You'll get the idea what this is the case here. 
 
-# Setting up sqlite3 
+# Setting up SQL database (foo.db) by sqlite3 in all nodes
 More details --> https://docs.python.org/2/library/sqlite3.html  
 
 Basically, we will setup sqlite3 (non standard SQL) in all 3 nodes so that once we query our words, all 3 nodes can execute our jobs in parallel and will generate output. To create a SQL database (file.db), you need to know 5 basic functions of sqlite3. 
@@ -89,7 +89,12 @@ In gpfs1,
 # cd /gpfs/gpfsfpo/bigrams/
 # vi create_db.py
 ```
-copy and paste `create_db.py` 
+copy and paste `create_db.py` script lines
+
+In gpfs1 node, run the following script. This will create `gpfs1_bigrams.db` database. Similary, in gpfs2 and gpfs3 node, run the same commands with `gpfs2 34 66` and `gpfs3 67 99` changes respectively. The rest of the directory should be the same. 
+```
+# python2 create_db.py /gpfs/gpfsfpo/bigrams/ gpfs1 0 33 /gpfs/gpfsfpo/bigrams/
+```
 
 
 
