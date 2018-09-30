@@ -70,7 +70,7 @@ Basically, we will setup sqlite3 (non standard SQL) in all 3 nodes so that once 
 5. close()  
 
 ### 1. connect()
-This method will establish a connection to the database (file.db). 
+This method will establish a connection to the database (f00.db). 
 
 ### 2. cursor ()
 This will create an object where you can execute your input data. 
