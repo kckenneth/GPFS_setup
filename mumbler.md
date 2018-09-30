@@ -21,16 +21,19 @@ This is **optional** for my knowledge. You don't need to download all files.
 # wget http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-2gram-20090715-{0..99}.csv.zip
 ```
 
-This is the actual step in preprocessing the bigram dataset. Do this in all 3 nodes: gpfs1, gpfs2 and gpfs3. 
+This is the actual step in preprocessing the bigram dataset. Do this in all 3 nodes: gpfs1, gpfs2 and gpfs3. In downzip_pp.py (Download Zip file and PreProcess), in order to run from CLI, you might want to check the python path and update in shebang. 
 ```
+# which python3
+/usr/bin/python3
+
 # mkdir -p /gpfs/gpfsfpo/bigrams
 # cd /gpfs/gpfsfpo/bigrams/
 # vi downzip_pp.py
 ```
-Note  
-In downzip_pp.py (Download Zip file and PreProcess), in order to run from CLI, you might want to check the python path and update in shebang. 
+You copy and paste from downzip_pp.py. Update the shebang accordingly. 
 ```
-# which python3
-/usr/bin/python3
+# chmod 755 downzip_pp.py
 ```
+
+
 
