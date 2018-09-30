@@ -1,9 +1,11 @@
 # Mumbler 
 
-Since we will be using python, we need to install the program and its dependencies in every node. I installed dependencies as necessary. These commands were executed in every node. 
+Since we will be using python, we need to install the program and its dependencies in every node. I installed dependencies as necessary. These commands were executed in every node. I also installed python2.7 in case. 
 ```
-# apt install python3
-# apt install python3-pip
+# apt update
+# apt upgrade
+# apt install python2.7 python-pip
+# apt install python3 python3-pip
 ```
 
 # Download Bigram and Preprocess on the fly
