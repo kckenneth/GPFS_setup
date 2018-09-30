@@ -78,6 +78,8 @@ def insert_into_database(input_data, target_db):
 
 if __name__ == '__main__':
 
+    # python2 create_db.py /gpfs/gpfsfpo/bigrams/ gpfs1 0 33 /gpfs/gpfsfpo/bigrams/
+    
     if len(sys.argv) != 6:
         print 'enter the gpfs .txt data filepath e.g. /gpfs/gpfsfpo/bigrams'
         print 'enter node name prefix e.g. gpfsN'
