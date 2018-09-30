@@ -16,17 +16,15 @@ def generate_filenames(prefix, low, high):
 	for i in range(low, high+1, 1):
 		filename = ''.join([prefix, str(i), '.csv'])
 		filenames.append(filename)
-
 	return filenames
-
 
 def generate_url(uri_base='', filename='', archive_type='.zip'):
 	return ''.join([uri_base, filename, archive_type])
 
-
 def download_file(uri, filename):
 	url = urlopen(uri)
 	odic = OrderedDict()
+	# Retrieving essential data on the fly while unzipping
 	with ZipFile(StringIO(url.read())) as zipfile:
 		with zipfile.open(filename) as f:
 			for line in f:
@@ -51,7 +49,7 @@ def save_file(input_data, output_file):
 if __name__ == '__main__':
 
 	if len(sys.argv) != 3:
-		print 'enter the start and end files'
+		print("enter the start and end files")
 	else:
 
 		start = sys.argv[1]
@@ -69,6 +67,6 @@ if __name__ == '__main__':
 			this_dict = download_file(url_str, name)
 
 			output_filename = ''.join(['bigrams-', str(i), '.txt'])
-			print 'writing file... %s' % (output_filename)
+			print("writing file... {}".format(output_filename))
 			with open(output_filename, 'wb') as outputfile:
 				pickle.dump(this_dict, outputfile)
