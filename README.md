@@ -11,3 +11,6 @@ https://github.com/kckenneth/GPFS_setup/blob/master/gpfs_setup.md
 This is a program that will detect the bigrams (two words such as `financial analysis`, `football field`, etc), and will generate how many of user specified bigrams in the repository. We will download the bigram repository made by Google at 2009. This repo consists of all bigrams before 2009. We will create an application that will search all key words user input from the repository. 
 
 We first download the repo into our virtual servers or nodes. We will then create an application that will search the key words in parallel across all the nodes we will provision in the softlayer cloud. 
+
+I detailed how to set up query here. 
+https://github.com/kckenneth/GPFS_setup/blob/master/mumbler.md
