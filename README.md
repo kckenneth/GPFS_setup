@@ -78,6 +78,7 @@ $ slcli vs list
 ```
 ### III. Setting up keygen in 3 nodes 
 [This step I found is optional, the keygen in the node is much more useful. However if you generate with id_rsa, it might work. Since I already have id_rsa (private key) in my laptop, I don't want to mess up with the existing ones.]  
+
 Since we already provisioned 3 virtual servers or nodes with `--key w251` key, the w251.pub public key is automatically added to each node ~/.ssh/authorized_keys file during privisioning. We also like them to communicate each other without requiring any passwords. So we need to add the private key (i.e., the key in our local host, laptop) to each of the three ndoes. The saltmaster node I created just in case, I need to communicate those 3 nodes from other servers.  
 `-i` flag is to specify the private key directory. Since we're connecting to the server, we need password. Instead of typing the password, just providing the key will bypass the password step. We're also directing the private key to be copied into virtual server .ssh directory.
 
