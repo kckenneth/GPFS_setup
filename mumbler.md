@@ -32,10 +32,22 @@ This is the actual step in preprocessing the bigram dataset. Do this in all 3 no
 # cd /gpfs/gpfsfpo/bigrams/
 # vi downzip_pp.py
 ```
-You copy and paste from downzip_pp.py. Update the shebang accordingly. 
+You copy and paste from downzip_pp.py. Update the shebang accordingly if you want to run directly from the root as in `# ./downzip_pp.py 0 33`. But this will require to change the script in sys.argv[] position. So just run as `python2 downzip_pp.py 0 33` in gpfs1.  
 ```
 # chmod 755 downzip_pp.py
+# python2 downzip_pp.py 0 33
 ```
+In gpfs2, to recap
+```
+# apt update
+# apt upgrade
+# apt install python2.7 python-pip
+# apt install python3 python3-pip
 
-
+# mkdir -p /gpfs/gpfsfpo/bigrams
+# cd /gpfs/gpfsfpo/bigrams/
+# vi downzip_pp.py
+# python2 downzip_pp.py 34 66
+```
+Repeat the CLI in gpfs3 as well. This will take hours to download and preprocess those 34, 33, 33 files in all nodes. 
 
