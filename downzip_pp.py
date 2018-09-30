@@ -48,20 +48,20 @@ def save_file(input_data, output_file):
 
 if __name__ == '__main__':
 
-	if len(sys.argv) != 3:
-		print 'enter the start and end files'
-	else:
+#	if len(sys.argv) != 3:
+#		print 'enter the start and end files'
+#	else:
+#
+#		start = sys.argv[1]
+#		end = sys.argv[2]
 
-		start = sys.argv[1]
-		end = sys.argv[2]
-
-		names = generate_filenames('googlebooks-eng-all-2gram-20090715-', start, end)
+		names = generate_filenames('googlebooks-eng-all-2gram-20090715-', 67, 99)
 
 		ub = 'http://storage.googleapis.com/books/ngrams/books/'
 		at = '.zip'
 
 		target_dir=''
-		for i, name in enumerate(names):
+		for i, name in enumerate(names, start=67):
 			url_str = generate_url(ub, name, at)
 			print 'downloading and pasring file from %s\n' % (url_str)
 			this_dict = download_file(url_str, name)
