@@ -7,14 +7,14 @@ from zipfile import ZipFile
 from urllib import urlopen 
 from collections import OrderedDict
 
-def generate_filenames(prefix, low, high):
+def generate_filenames(prefix, start, end):
 	filenames = []
-	low = int(low)
-	high = int(high)
+	start = int(start)
+	end = int(end)
 
-	for i in range(low, high+1, 1):
-		filename = ''.join([prefix, str(i), '.csv'])
-		filenames.append(filename)
+	for i in range(start, end+1, 1):
+	    filename = ''.join([prefix, str(i), '.csv'])
+	    filenames.append(filename)
 	return filenames
 
 def generate_url(uri_base='', filename='', archive_type='.zip'):
@@ -23,12 +23,14 @@ def generate_url(uri_base='', filename='', archive_type='.zip'):
 def download_file(uri, filename):
 	url = urlopen(uri)
 	odic = OrderedDict()
+	# retrieving essential data bigrams and its count on the fly
 	with ZipFile(StringIO(url.read())) as zipfile:
 		with zipfile.open(filename) as f:
 			for line in f:
 				fields = line.rstrip().split('\t')
 				try:
 					# only keep standard English characters
+                    # k = bigram key, v = bigram count value
 					k = fields[0].encode('utf8').decode('ascii').lower()
 				except UnicodeDecodeError as e:
 					continue
