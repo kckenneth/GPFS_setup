@@ -350,9 +350,9 @@ Setup the disk in all nodes
 mmcrnsd -F /root/diskfile.fpo
 ```
 
-Check if it's already setup
+Check if it's already setup. Make sure it's `mmlsnsd`. 
 ```
-mmcrnsd -m
+mmlsnsd -m
 
  Disk name    NSD volume ID      Device         Node name                Remarks       
 ---------------------------------------------------------------------------------------
