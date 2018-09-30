@@ -5,6 +5,10 @@ import sys
 import os
 import time
 
+"""
+This program will create SQL database using sqlite3. The bigram and counts we stored 
+in binary format by pickle will be inserted into SQL table so that we can query in later step.
+"""
 
 def load_pickle(input_file):
     # input_file = '/gpfs/gpfsfpo/bigrams/bigrams-0.txt'
