@@ -15,8 +15,8 @@ First we will download 1/3 of the data into each of the node. Data won't be repl
 ### Bigram Dataset
 
 Download google two-gram 27G data set - English version 20090715 from this repository  
-http://storage.googleapis.com/books/ngrams/books/datasetsv2.html
-This is optional for my knowledge. You don't need to download all files. 
+http://storage.googleapis.com/books/ngrams/books/datasetsv2.html  
+This is **optional** for my knowledge. You don't need to download all files. 
 ```
 # wget http://storage.googleapis.com/books/ngrams/books/googlebooks-eng-all-2gram-20090715-{0..99}.csv.zip
 ```
@@ -25,9 +25,6 @@ This is the actual step in preprocessing the bigram dataset. Do this in all 3 no
 ```
 # mkdir -p /gpfs/gpfsfpo/bigrams
 # cd /gpfs/gpfsfpo/bigrams/
-# vi download_pp.py
+# vi downzip_pp.py
 ```
-
-
-
 
