@@ -41,18 +41,18 @@ def download_file(uri, filename):
             for line in f:
                 fields = line.rstrip().split('\t')
                 try:
-					# only keep standard English characters
+                    # only keep standard English characters
                     # k = bigram key, v = bigram count value
-					k = fields[0].encode('utf8').decode('ascii').lower()
-				except UnicodeDecodeError as e:
-					continue
-				else:
-					v = int(fields[2])
-					if k in odic:
-						odic[k] += v       # keep adding the match count if the bigram exists
-					else:
-						odic[k] = v        # assign a new match count if the bigram does not exist yet
-	return odic
+                    k = fields[0].encode('utf8').decode('ascii').lower()
+                except UnicodeDecodeError as e:
+                    continue
+                else:
+                    v = int(fields[2])
+                    if k in odic:
+                        odic[k] += v       # keep adding the match count if the bigram exists
+                    else:
+                        odic[k] = v        # assign a new match count if the bigram does not exist yet
+    return odic
 
 
 if __name__ == '__main__':
@@ -63,20 +63,18 @@ if __name__ == '__main__':
 #
 #		start = sys.argv[1]
 #		end = sys.argv[2]
-
-		names = generate_filenames('googlebooks-eng-all-2gram-20090715-', 67, 99)
-
-		url_base = 'http://storage.googleapis.com/books/ngrams/books/'
-		file_ext = '.zip'
-
-		target_dir=''
-		for i, name in enumerate(names, start=67):
-			url_str = generate_url(url_base, name, file_ext)
-			print 'downloading and parsing file from %s\n' % (url_str)
-			this_dict = download_file(url_str, name)
-
-			output_filename = ''.join(['bigrams-', str(i), '.txt'])
-			print 'writing file... %s' % (output_filename)
-            # saving {"bigram":"count"} dict in binary format
-			with open(output_filename, 'wb') as outputfile:
-				pickle.dump(this_dict, outputfile)
+    names = generate_filenames('googlebooks-eng-all-2gram-20090715-', 67, 99)
+    
+    url_base = 'http://storage.googleapis.com/books/ngrams/books/'
+    file_ext = '.zip'
+    
+    for i, name in enumerate(names, start=67):
+        url_str = generate_url(url_base, name, file_ext)
+        print 'downloading and parsing file from %s\n' % (url_str)
+        this_dict = download_file(url_str, name)
+        
+        output_filename = ''.join(['bigrams-', str(i), '.txt'])
+        print 'writing file... %s' % (output_filename)
+        # saving {"bigram":"count"} dict in binary format
+        with open(output_filename, 'wb') as outputfile:
+            pickle.dump(this_dict, outputfile)
