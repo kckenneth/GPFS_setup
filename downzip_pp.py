@@ -57,12 +57,6 @@ def download_file(uri, filename):
 
 if __name__ == '__main__':
 
-#	if len(sys.argv) != 3:
-#		print 'enter the start and end files'
-#	else:
-#
-#		start = sys.argv[1]
-#		end = sys.argv[2]
     names = generate_filenames('googlebooks-eng-all-2gram-20090715-', 67, 99)
     
     url_base = 'http://storage.googleapis.com/books/ngrams/books/'
