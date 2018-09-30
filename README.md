@@ -115,8 +115,8 @@ gpfs3::
 
 # vi /etc/hosts
 127.0.0.1      localhost.localdomain localhost
-10.91.105.14   gpfs1
-10.91.105.3    gpfs2
+10.91.105.3   gpfs1
+10.91.105.14    gpfs2
 10.91.105.16   gpfs3
 ```
 
