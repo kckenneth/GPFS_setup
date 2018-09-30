@@ -63,7 +63,7 @@ if __name__ == '__main__':
 		target_dir=''
 		for i, name in enumerate(names, start=67):
 			url_str = generate_url(ub, name, at)
-			print 'downloading and pasring file from %s\n' % (url_str)
+			print 'downloading and parsing file from %s\n' % (url_str)
 			this_dict = download_file(url_str, name)
 
 			output_filename = ''.join(['bigrams-', str(i), '.txt'])
