@@ -33,8 +33,8 @@ This is the actual step in preprocessing the bigram dataset. Do this in all 3 no
 # vi downzip_pp.py
 ```
 You copy and paste from downzip_pp.py. Update the shebang accordingly if you want to run directly from the root as in `# ./downzip_pp.py 0 33`. But this will require to change the script in sys.argv[] position because having #! shebang allows you to run without calling python in CLI. Besides, with the enumerate function in the script which doesn't allow to starting index with string object, I had to manually edit the starting and ending file index. So in gpfs1 `downzip_pp.py`,  
-- in line 66, names = generate_filenames('xxx...', 0, 33)    
-- in line 71, enumerate(names, start=0)  
+- in line 60, names = generate_filenames('xxx...', 0, 33)    
+- in line 65, enumerate(names, start=0)  
 
 So just run as `python2 downzip_pp.py 0 33` in gpfs1.  
 ```
