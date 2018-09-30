@@ -347,12 +347,12 @@ failureGroup=3
 
 Setup the disk in all nodes
 ```
-mmcrnsd -F /root/diskfile.fpo
+# mmcrnsd -F /root/diskfile.fpo
 ```
 
 Check if it's already setup. Make sure it's `mmlsnsd`. 
 ```
-mmlsnsd -m
+# mmlsnsd -m
 
  Disk name    NSD volume ID      Device         Node name                Remarks       
 ---------------------------------------------------------------------------------------
@@ -362,14 +362,14 @@ mmlsnsd -m
 ```
 
 ### Create a file system 
-This is what I think happening. First we launched 3 virtual servers. We then installed GPFS in each of those nodes. We made sure they can communicate without passwords. Since we want to communicate with those nodes at ease. Also the nodes can also communicate with each other at ease. Basically you're combining all nodes so that you increase your capacity. Conceptually every node is like state in the US. But by combining all states (nodes), you have more capacity (federal), and more resources. Of course you'd need an elected leader, which is a quorum manager. Here GPFS is our quorum manager. 
+This is what I think happening. First we launched 3 virtual servers. We then installed GPFS in each of those nodes. We made sure they can communicate without passwords. Since we want to communicate with those nodes at ease. Also the nodes can also communicate with each other at ease. Basically you're combining all nodes so that you increase your capacity. Conceptually every node is like state in the US. But by combining all states (nodes), you have more capacity (federal), and more resources. Of course you'd need an elected leader, which is a quorum manager. Here gpfs1 is our quorum manager. 
 
 Now since we have established all disks from every node, we want them to communicate efficiently. Basically if you have an address on your disk, you don't want them to be the same as in other nodes. Otherwise, it would be a disaster. So you'll need to streamline all address across all the nodes you created. So when you create a file system, this will create `inode` system that will become a backbone of GPFS across all nodes in your cluster. 
 
 Replication 1 means the data won't be replicated. If 2, the data will be replicated twice. 
 
 ```
-mmcrfs gpfsfpo -F /root/diskfile.fpo -A yes -Q no -r 1 -R 1
+# mmcrfs gpfsfpo -F /root/diskfile.fpo -A yes -Q no -r 1 -R 1
 
 ...
 Clearing Inode Allocation Map
