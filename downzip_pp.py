@@ -1,13 +1,12 @@
+#!/usr/bin/python3
+
 import sys
 import os
 import pickle
-import mmap
 from StringIO import StringIO
 from zipfile import ZipFile
 from urllib import urlopen 
 from collections import OrderedDict
-
-
 
 def generate_filenames(prefix, low, high):
 	filenames = []
