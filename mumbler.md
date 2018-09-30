@@ -27,4 +27,10 @@ This is the actual step in preprocessing the bigram dataset. Do this in all 3 no
 # cd /gpfs/gpfsfpo/bigrams/
 # vi downzip_pp.py
 ```
+Note  
+In downzip_pp.py (Download Zip file and PreProcess), in order to run from CLI, you might want to check the python path and update in shebang. 
+```
+# which python3
+/usr/bin/python3
+```
 
