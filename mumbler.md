@@ -32,10 +32,14 @@ This is the actual step in preprocessing the bigram dataset. Do this in all 3 no
 # cd /gpfs/gpfsfpo/bigrams/
 # vi downzip_pp.py
 ```
-You copy and paste from downzip_pp.py. Update the shebang accordingly if you want to run directly from the root as in `# ./downzip_pp.py 0 33`. But this will require to change the script in sys.argv[] position. So just run as `python2 downzip_pp.py 0 33` in gpfs1.  
+You copy and paste from downzip_pp.py. Update the shebang accordingly if you want to run directly from the root as in `# ./downzip_pp.py 0 33`. But this will require to change the script in sys.argv[] position because having #! shebang allows you to run without calling python in CLI. Besides, with the enumerate function in the script which doesn't allow to starting index with string object, I had to manually edit the starting and ending file index. So in gpfs1 `downzip_pp.py`,  
+- in line 58, names = generate_filenames('xxx...', 0, 33)    
+- in line 64, enumerate(names, start=0)  
+
+So just run as `python2 downzip_pp.py 0 33` in gpfs1.  
 ```
 # chmod 755 downzip_pp.py
-# python2 downzip_pp.py 0 33
+# python2 downzip_pp.py
 ```
 In gpfs2, to recap
 ```
@@ -47,7 +51,10 @@ In gpfs2, to recap
 # mkdir -p /gpfs/gpfsfpo/bigrams
 # cd /gpfs/gpfsfpo/bigrams/
 # vi downzip_pp.py
-# python2 downzip_pp.py 34 66
+```
+Make sure you update the index from 34 to 66 in gpfs2 and 67 to 99 in gpfs3. 
+```
+# python2 downzip_pp.py 
 ```
 Repeat the CLI in gpfs3 as well. This will take hours to download and preprocess those 34, 33, 33 files in all nodes. 
 
