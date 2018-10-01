@@ -96,11 +96,13 @@ This program will create SQL table using sqlite3 in python. Bigrams in binary fo
 https://www.guru99.com/sqlite-view-index-trigger.html
 
 Basically, indexing in SQL is also similar to indexing in books for certain words. Instead of scanning all the words in the book from the beginning to the end, by searching in index in the last part of book can help you quickly localize your search word. However, after several trials and runs, I realized I cannot create index for both first and second unigram because they are not unique. For example, 
+| FirstWord | SecondWord |
+|:---------:|:----------:|
 | financial | analysis | 
 | financial | capacity | 
 | forgery | analysis |
 
-In this case, 
+In this case, FirstWord has duplicate entry on 'financial' and SecondWord has on 'analysis' although each entry considered together with FirstWord and SecondWord are unique in their own way. So I ended up not creating an index. 
 
 In gpfs1 node, run the following script. This will create `gpfs1_bigrams.db` database. Similary, in gpfs2 and gpfs3 node, run the same commands with `gpfs2 34 66` and `gpfs3 67 99` changes respectively. The rest of the directory should be the same. 
 ```
