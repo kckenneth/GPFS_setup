@@ -109,6 +109,8 @@ In gpfs1 node, run the following script. This will create `gpfs1_bigrams.db` dat
 ```
 # python2 create_db.py /gpfs/gpfsfpo/bigrams/ gpfs1 0 33 /gpfs/gpfsfpo/bigrams/
 ```
+You can still view `gpfs1_bigrams.db`, `gpfs2_bigrams.db`, `gpfs3_bigrams.db` in every node. You might ask what the use of separating databases when we're seeing all databases from every node. The idea is when it comes to running query in each node, imagine if we had created a single solitary `gpfs_bigrams.db` albeit executable in every node, each node will be executing their query on the same database, which is in fact redundant effort. We want every node query to be unique on its own effort in searching in the unscanned database. That's why we created three separate database here. 
+
 
 
 
