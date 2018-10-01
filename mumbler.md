@@ -91,6 +91,12 @@ In gpfs1,
 ```
 copy and paste `create_db.py` script lines
 
+#### create_db.py details
+This program will create SQL table using sqlite3 in python. Bigrams in binary format are loaded and split into two unigrams. So creating two columns for each first and second unigram. The third column is their associated count value. So if the bigram is 'Financial Analysis' and count value is '2', it becomes FirstWord = Financial, SecondWord = Analysis and Count = 2. As we're inserting values to the `bigram_counts` table, as long as the bigrams already exists in the table, the count will be aggregated. It takes time to build the SQL table. But by doing so, i.e, aggregating the counts now, it becomes so much faster when you search the query in later step. I also created an index for both first and second word. The idea of creating index is to help search quickly. You can read up about the indexing in SQL table here a lot more.  
+https://www.guru99.com/sqlite-view-index-trigger.html
+
+Basically, indexing in SQL is also similar to indexing in books for certain words. Instead of scanning all the words in the book from the beginning to the end, by searching in index in the last part of book can help you quickly localize your search word.  
+
 In gpfs1 node, run the following script. This will create `gpfs1_bigrams.db` database. Similary, in gpfs2 and gpfs3 node, run the same commands with `gpfs2 34 66` and `gpfs3 67 99` changes respectively. The rest of the directory should be the same. 
 ```
 # python2 create_db.py /gpfs/gpfsfpo/bigrams/ gpfs1 0 33 /gpfs/gpfsfpo/bigrams/
