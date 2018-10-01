@@ -27,9 +27,10 @@ def split_bigram(bigram):
         return (f, s)
 
 
-def reset_database_table(target_db):
+def create_database_table(target_db):
     """Creating SQL table"""
     # target_db = gpfsX_bigrams.db
+    # table name = bigram_counts
     with sq.connect(target_db) as conn:
         try:
             cur = conn.cursor()
@@ -93,8 +94,8 @@ if __name__ == '__main__':
         db_path = sys.argv[5]
 
         db_file = os.path.join(db_path, ''.join([node_prefix, '_bigrams.db']))
-        print 'resetting: %s' % db_file
-        reset_database_table(db_file)
+        print 'creating database : %s' % db_file
+        create_database_table(db_file)
 
 
         for i in range(fstart_index, fend_index+1, 1):
