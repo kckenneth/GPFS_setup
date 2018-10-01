@@ -129,10 +129,11 @@ We like to establish a web-base app by Flask where we can send the query by web 
 ```
 # vi flask_server.py
 ```
-copy and paste the `flask_server.py` script. Due to some libraries usages, you need to install dependencies in every node.  
+copy and paste the `flask_server.py` script. Due to some libraries usages, you need to install dependencies in every node.  Installing `gevent~=1.2.2` because latest version does not support `wsgi`, and you need to change it to `pywsgi`. 
 ```
 # chmod 755 flask_server.py
-# pip2 install flask_restful sqlalchemy gevent
+# pip2 install flask_restful sqlalchemy 
+# pip2 install -U 'gevent~=1.2.2'
 ```
 In gpfs1 node, 
 ```
