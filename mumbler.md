@@ -147,6 +147,12 @@ In gpfs3 node,
 # python2 flask_server.py 198.23.88.162 gpfs3_bigrams.db
 ```
 
+# Running Mumbler
+
+```
+# python2 mumbler.py science 5
+```
+
 
 
 
