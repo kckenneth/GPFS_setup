@@ -111,6 +111,16 @@ In gpfs1 node, run the following script. This will create `gpfs1_bigrams.db` dat
 ```
 You can still view `gpfs1_bigrams.db`, `gpfs2_bigrams.db`, `gpfs3_bigrams.db` in every node. You might ask what the use of separating databases when we're seeing all databases from every node. The idea is when it comes to running query in each node, imagine if we had created a single solitary `gpfs_bigrams.db` albeit executable in every node, each node will be executing their query on the same database, which is in fact redundant effort. We want every node query to be unique on its own effort in searching in the unscanned database. That's why we created three separate database here. 
 
+If you check after .db creation, each .db has about ~1.7GB, and the total makes up ~ 5.2 GB. If we didn't save in downloaded zip file in binary format, it would take up 160GB. 
+
+```
+# ls *.db -altr -h
+
+-rw-r--r-- 1 root root 1.7G Oct  1 03:08 gpfs3_bigrams.db
+-rw-r--r-- 1 root root 1.7G Oct  1 03:09 gpfs2_bigrams.db
+-rw-r--r-- 1 root root 1.8G Oct  1 03:12 gpfs1_bigrams.db
+```
+
 # Setting up Flask in each node 
 
 We like to establish a web-base app by Flask where we can send the query by web approach and execute the database search in each node. 
