@@ -147,6 +147,24 @@ In gpfs3 node,
 ```
 # python2 flask_server.py 198.23.88.162 gpfs3_bigrams.db
 ```
+Note  
+When you execute flask_server.py and it the IP and port is being used, you can kill the program. It could be due to prior run and you did not shut down the program completely. First we will check which program is using the port. Then kill the program by `<PID>`. 
+```
+# lsof -i :5000
+
+COMMAND  PID USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+python2 1358 root    6u  IPv4 313630      0t0  TCP a3.58.17c6.ip4.static.sl-reverse.com:5000 (LISTEN)
+```
+You can also check which particular job is running by `jobs`. Although this wouldn't tell you PID, but it's good to know. 
+```
+# jobs
+
+[1]+  Running                 python2 flask_server.py 198.23.88.163 gpfs1_bigrams.db &
+```
+To kill the program 
+```
+# kill -9 <PID>
+```
 
 # Running Mumbler
 
