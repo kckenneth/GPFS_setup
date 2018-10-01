@@ -129,9 +129,13 @@ We like to establish a web-base app by Flask where we can send the query by web 
 ```
 # vi flask_server.py
 ```
-copy and paste the `flask_server.py` script. In gpfs1 node, 
+copy and paste the `flask_server.py` script. Due to some libraries usages, you need to install dependencies in every node.  
 ```
 # chmod 755 flask_server.py
+# pip2 install flask_restful sqlalchemy gevent
+```
+In gpfs1 node, 
+```
 # python2 flask_server.py 198.23.88.163 gpfs1_bigrams.db
 ```
 Similarly in gpfs2 node, 
