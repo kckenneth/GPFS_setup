@@ -14,3 +14,52 @@ We first download the repo into our virtual servers or nodes. We will then creat
 
 I detailed how to set up query here.  
 https://github.com/kckenneth/GPFS_setup/blob/master/mumbler.md
+
+# Running Mumbler
+
+Running Flask WSGIServer at the Virtual Servers
+For gpfs1
+```
+$ ssh root@198.23.88.163
+# cd /gpfs/gpfsfpo/bigrams
+# python2 flask_server.py 198.23.88.163 gpfs1_bigrams.db
+```
+For gpfs2
+```
+$ ssh root@198.23.88.163
+# cd /gpfs/gpfsfpo/bigrams
+# python2 flask_server.py 198.23.88.166 gpfs2_bigrams.db
+```
+For gpfs3
+```
+$ ssh root@198.23.88.163
+# cd /gpfs/gpfsfpo/bigrams
+# python2 flask_server.py 198.23.88.162 gpfs3_bigrams.db
+```
+
+Running Mumbler  
+This will take a few seconds. 
+```
+$ ssh root@19823.88.163
+# cd /gpfs/gpfsfpo/bigrams/
+# python2 mumbler.py financial 5
+```
+This is the output from 'financial 5' run. 
+```
+This is the query word ...financial statements ) or indicate
+```
+If you want to see more of the bigrams, remove the pound sign in `mumbler.py` script in line `79`. If you open the bigram outputs, this will look like this. 
+```
+item {u'Count': 1221, u'SecondWord': u"'", u'FirstWord': u'financial'}
+item {u'Count': 3500, u'SecondWord': u')', u'FirstWord': u'financial'}
+item {u'Count': 587, u'SecondWord': u'*', u'FirstWord': u'financial'}
+item {u'Count': 47299, u'SecondWord': u'-', u'FirstWord': u'financial'}
+item {u'Count': 70147, u'SecondWord': u'.', u'FirstWord': u'financial'}
+item {u'Count': 271, u'SecondWord': u'/', u'FirstWord': u'financial'}
+item {u'Count': 108, u'SecondWord': u'0', u'FirstWord': u'financial'}
+```
+
+
+
+
+
