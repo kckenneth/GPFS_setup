@@ -107,6 +107,7 @@ In this case, FirstWord has duplicate entry on 'financial' and SecondWord has on
 
 In gpfs1 node, run the following script. This will create `gpfs1_bigrams.db` database. Similary, in gpfs2 and gpfs3 node, run the same commands with `gpfs2 34 66` and `gpfs3 67 99` changes respectively. The rest of the directory should be the same. 
 ```
+# chmod 755 create_db.py
 # python2 create_db.py /gpfs/gpfsfpo/bigrams/ gpfs1 0 33 /gpfs/gpfsfpo/bigrams/
 ```
 You can still view `gpfs1_bigrams.db`, `gpfs2_bigrams.db`, `gpfs3_bigrams.db` in every node. You might ask what the use of separating databases when we're seeing all databases from every node. The idea is when it comes to running query in each node, imagine if we had created a single solitary `gpfs_bigrams.db` albeit executable in every node, each node will be executing their query on the same database, which is in fact redundant effort. We want every node query to be unique on its own effort in searching in the unscanned database. That's why we created three separate database here. 
@@ -130,6 +131,7 @@ We like to establish a web-base app by Flask where we can send the query by web 
 ```
 copy and paste the `flask_server.py` script. In gpfs1 node, 
 ```
+# chmod 755 flask_server.py
 # python2 flask_server.py 198.23.88.163 gpfs1_bigrams.db
 ```
 Similarly in gpfs2 node, 
