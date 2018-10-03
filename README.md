@@ -59,6 +59,19 @@ item {u'Count': 271, u'SecondWord': u'/', u'FirstWord': u'financial'}
 item {u'Count': 108, u'SecondWord': u'0', u'FirstWord': u'financial'}
 ```
 
+# Improvement
+
+As I want to keep the flask server running in the background, I executed the following commands in each node. So you don't need to run the flask server anymore. You just need to run the mumbler.py in one of the nodes. 
+```
+$ nohup python2 flask_server.py 198.23.88.163 gpfs1_bigrams.db &
+```
+I repeated the CLI in all nodes and flask servers are running in the background! If you want, you don't need to ssh into gpfs1,2,3, you can even go to your browser and key in
+```
+http://198.23.88.163:5000/financial
+```
+This will also do the same mumbler stuff. Cool!
+
+
 
 
 
