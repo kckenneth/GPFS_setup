@@ -1,6 +1,6 @@
 |Title |  GPFS Installation |
 |-----------|----------------------------------|
-|Author | Kenneth Chen, Ph.D |
+|Author | Kenneth Chen |
 |Utility | IBM, Softlayer, GPFS, SQL |
 |Date | 9/10/2018 |
 
